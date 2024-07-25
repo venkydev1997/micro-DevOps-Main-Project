@@ -9,7 +9,7 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        //git branch: 'main', url: 'https://github.com/subs007/micro-DevOps-Main-Project.git'
+        //git branch: 'main', url: 'https://github.com/venkydev1997/micro-DevOps-Main-Project.git'
       }
     }
     stage('Build and Test') {
@@ -31,7 +31,7 @@ pipeline {
     }
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "subs007/ultimate-cicd:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "venkatesh1997/ultimate-cicd:${BUILD_NUMBER}"
         // DOCKERFILE_LOCATION = "spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
@@ -48,7 +48,7 @@ pipeline {
     stage('Update Deployment File') {
         environment {
             GIT_REPO_NAME = "micro-DevOps-Main-Project"
-            GIT_USER_NAME = "subs007"
+            GIT_USER_NAME = "venkydev1997"
         }
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
